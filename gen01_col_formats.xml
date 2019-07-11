@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sql>
+<title> Column xRefs </title>
+	<query> 
+	 <![CDATA[
+		   select x.COL_NAME, 
+                  x.RPT_HDR,  
+	              x.RPT_FMT,  
+	              x.COL_DESC,  
+	              x.AUD_USR,
+	              x.AUD_TS   
+             from $$schema.conv_master_col_xref x 
+	  ]]>
+		<!-- 1. Always write the SQL inside CDATA section [CDATA[ ..... ]] 2. enclose 
+			the variables inside ${ ... } and set the name in all small case. -->
+	</query>
+	<colformat>
+		<column name="COL_NAME">
+			<rpthdr></rpthdr>
+			<format><![CDATA[%-20s]]></format>
+		</column>
+		<column name="RPT_HDR">
+			<reptcolhdr></reptcolhdr>
+			<format><![CDATA[%-20s]]></format>
+		</column>
+		<column name="RPT_FMT">
+			<reptcolhdr></reptcolhdr>
+			<format><![CDATA[%-20s]]></format>
+		</column>
+		<column name="COL_DESC">
+			<reptcolhdr></reptcolhdr>
+			<format><![CDATA[%-20s]]></format>
+		</column>
+		<column name="AUD_USR">
+			<reptcolhdr></reptcolhdr>
+			<format><![CDATA[%-8s]]></format>
+		</column>
+		<column name="AUD_TS">
+			<reptcolhdr></reptcolhdr>
+			<format><![CDATA[%tT %tD]]></format>
+		</column>
+		<!-- <name> tag should contain the column label in upper case If AS is 
+			used for overriding the column label, use it instead of the column name. 
+			Formatting is done using java's String.format() method. For more details 
+			:- http://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html Always 
+			write the format inside CDATA section <format><![CDATA[ %-10s ]]></format> -->
+	</colformat>
+	<varlist>
+		<variable name="schema">
+			<datatype>string</datatype>
+			<default>" "</default>
+		</variable>
+	</varlist>
+</sql>
