@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sql>
+    <title>ConvCD: $$convcd  Wave: $$wave Phase: $$phase :- Indicative Data - PH Invalid Address List </title>
+	<query> 
+	   <![CDATA[
+		 	SELECT i.REC_TYPE,
+             i.HDR_PLAN_NUM,
+             i.HDR_PART_NUM,
+             i.SSN,
+             i.PART_NAME_FULL,
+             i.EMP_NUM_1,
+             i.SEX,
+             i.SALARY,
+             i.BIRTH_DATE,
+             i.HIRE_DATE,
+             i.PLAN_ELIG_DATE,
+             i.ADDR_LINE_1,
+             i.ADDR_LINE_2,
+             i.ADDR_LINE_3,
+             i.city,
+             i.state,
+             i.zip,
+             i.ADDR_TYPE            				
+			FROM JPMRPS_INDIC_PH_W2T i
+			WHERE NOT (i.CITY        IS NULL   AND
+					       i.STATE       IS NULL   AND
+				         i.ADDR_LINE_1 IS NULL)
+            AND 1 != 1
+			ORDER BY i.CLIENT_PLAN_NBR, i.SSN
+	    ]]>
+		<!-- 1. Always write the SQL inside CDATA section [CDATA[ ..... ]] 2. enclose 
+			the variables inside ${ ... } and set the name in all small case. -->
+	</query>
+	<colformat>
+		<!-- <name> tag should contain the column label in upper case If AS is 
+			used for overriding the column label, use it instead of the column name. 
+			Formatting is done using java's String.format() method. For more details 
+			:- http://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html Always 
+			write the format inside CDATA section <format><![CDATA[ %-10s ]]></format> -->
+	</colformat>
+	<varlist>
+		<variable name="schema"><datatype>string</datatype><default> </default></variable>
+		<variable name="wave"><datatype>string</datatype><default>2</default></variable>
+		<variable name="phase"><datatype>string</datatype><default>T</default></variable>
+		<variable name="convcd"><datatype>string</datatype><default>JPMRPS</default></variable>
+	</varlist>
+</sql>
