@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reports>
+	<report id="indic_02">
+		<name>Reminder</name>
+		<category>generic</category>
+		<sqlpath>./gen01_col_formats.xml</sqlpath>
+	</report>
+	<report id="indic_099">
+		<name>PH: Invalid Address</name>
+		<category>Indicative</category>
+		<sqlpath>./indic_099_Invalid_addr.xml</sqlpath>
+	</report>
+</reports>
+
+
+
